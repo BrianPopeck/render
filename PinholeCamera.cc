@@ -1,5 +1,5 @@
 #include "PinholeCamera.h"
 
-void PinholeCamera::render(Image) const {
-    
+void PinholeCamera::render(Image&) const {
+    return;
 }

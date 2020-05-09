@@ -3,5 +3,5 @@
 
 class PinholeCamera : public Camera {
 public:
-    virtual void render(Image) const;
+    virtual void render(Image&) const;
 };
