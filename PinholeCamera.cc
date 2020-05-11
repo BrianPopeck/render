@@ -1,6 +1,8 @@
 #include "PinholeCamera.h"
 
-std::shared_ptr<PinholeCamera> create() {
+PinholeCamera::PinholeCamera() {}
+
+std::shared_ptr<PinholeCamera> PinholeCamera::create() {
     return std::shared_ptr<PinholeCamera>(new PinholeCamera());
 }
 
@@ -16,4 +18,11 @@ void PinholeCamera::render(Image& img) const {
         }
     }
     return;
+}
+
+void PinholeCamera::getPrimaryRay(float x, float y, int img_width, int img_height, Ray& ray) {
+    // start ray from camera position
+    ray.P = this->position;
+
+    // 
 }
