@@ -12,11 +12,12 @@ public:
     static std::shared_ptr<Image> create();
     void saveToDisk(std::string&) const;
 
+    static const int height = 800;
+    static const int width = 600;
+
 protected:
     Image();
 
 private:
     std::vector<Pixel> buffer;  // store RGB values
-    static const int height = 800;
-    static const int width = 600;
 };
