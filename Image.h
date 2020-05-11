@@ -2,22 +2,22 @@
 
 #pragma once
 
-#include "Pixel.h"
+#include "Color3.h"
 #include <memory>
-#include <vector>
 #include <string>
 
 class Image {
 public:
     static std::shared_ptr<Image> create();
     void saveToDisk(std::string&) const;
+    void setPixel(int x, int y, const Color3& color);
 
-    static const int height = 800;
-    static const int width = 600;
+    static const int height = 600;
+    static const int width = 800;
 
 protected:
     Image();
 
 private:
-    std::vector<Pixel> buffer;  // store RGB values
+    Color3 buffer [width][height];
 };
