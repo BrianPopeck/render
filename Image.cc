@@ -20,17 +20,12 @@ void Image::saveToDisk(std::string& filename) const {
 
     file << "P3\n" << this->width << " " << this->height << "\n255\n";  // header for PPM file with RGB values in [0,255]
 
-    for (int x = 0; x < width; x++) {
-        for (int y = 0; y < height; y++) {
+    // PPM file format expects pixels to be listed row-wise (i.e. iterate through row, then move onto next row down)
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
             file << int(buffer[x][y].r) << " " << int(buffer[x][y].g) << " " << int(buffer[x][y].b) << "\n";
         }
     }
-
-    // for (auto it = this->buffer.begin(); it != this->buffer.end(); ++it) {
-    //     // file << it->r << " " << it->g << " " << it->b << "\n";
-    //     file << 255 << " " << 255 << " " << 255 << "\n";
-    // }
-
 }
 
 void Image::setPixel(int x, int y, const Color3& color) {
