@@ -9,7 +9,7 @@ std::shared_ptr<PinholeCamera> PinholeCamera::create() {
     return std::shared_ptr<PinholeCamera>(new PinholeCamera());
 }
 
-void PinholeCamera::render(Image& img) const {
+void PinholeCamera::render(Scene& scene, Image& img) const {
     const int width = img.width;
     const int height = img.height;
 
@@ -20,7 +20,7 @@ void PinholeCamera::render(Image& img) const {
             getPrimaryRay(float(x) + 0.5f, float(y) + 0.5f, width, height, camera_ray); // get ray to center of current pixel
 
             // if that ray hits an object, return white, else return black
-            Vector3 radiance = App::L_i(camera_ray);
+            Vector3 radiance = App::L_i(camera_ray, scene);
             img.setPixel(x, y, Color3(radiance));
         }
     }
@@ -38,5 +38,5 @@ void PinholeCamera::getPrimaryRay(float x, float y, int img_width, int img_heigh
                         z_near * -(y / img_height - 0.5f) * side,   // flip y-coordinate because up is positive in 3D axis, down is positive in 2D axis
                         z_near);
 
-    ray.w.unit();   // use unit rays for more interpretable times of intersection during tracing
+    ray.w = ray.w.unit();   // use unit rays for more interpretable times of intersection during tracing
 }

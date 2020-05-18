@@ -6,7 +6,7 @@
 
 class PinholeCamera : public Camera {
 public:
-    virtual void render(Image&) const;
+    virtual void render(Scene&, Image&) const;
     static std::shared_ptr<PinholeCamera> create();
 protected:
     PinholeCamera();
