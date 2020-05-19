@@ -9,6 +9,9 @@ public:
     std::vector<Vector3> vertexList;
     std::vector<int> indexList;
 
+    IndexedTriangleList();
+    IndexedTriangleList(const char* filename);
+    
     Triangle getTriangle(int i) const;
     int size() const;
 };
